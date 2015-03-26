@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,51 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.idreambooks;
+
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class BookReview {
+	@JsonProperty("critic_reviews")
+	private ArrayList<CriticReview> reviews = new ArrayList<CriticReview>();
+
+	@JsonProperty("detail_link")
+	private String detailLink = "";
+
+	@JsonProperty("detail_link")
+	public String getDetailLink() {
+		return detailLink;
+	}
+
+	@JsonProperty("detail_link")
+	public void setDetailLink(String l) {
+		detailLink = l;
+	}
+
+	@JsonProperty("critic_reviews")
+	public ArrayList<CriticReview> getCriticReviews() {
+		return reviews;
+	}
+
+	@JsonProperty("critic_reviews")
+	public void setCriticReviews(ArrayList<CriticReview> c) {
+		reviews = c;
+	}
+
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+
+		for(CriticReview r : reviews) {
+			sb.append(r.toString());
+			sb.append(System.lineSeparator());
+		}
+
+		return sb.toString();
+	}
+}

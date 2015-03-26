@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,57 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.twitter;
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Tweet {
+
+	@JsonProperty("body")
+	private String body = "";
+
+	@JsonProperty("link")
+	private String link = "";
+
+	@JsonProperty("actor")
+	private TwitterActor actor = new TwitterActor();
+
+	@JsonProperty("actor")
+	public TwitterActor getActor() {
+		return actor;
+	}
+
+	@JsonProperty("actor")
+	public void setActor(TwitterActor a){
+		actor = a;
+	}
+
+	@JsonProperty("body")
+	public String getBody() {
+		return body;
+	}
+
+	@JsonProperty("body")
+	public void setBody(String b){
+		body = b;
+	}
+
+	@JsonProperty("link")
+	public String getLink() {
+		return link;
+	}
+
+	@JsonProperty("link")
+	public void setLink(String l){
+		link = l;
+	}
+
+	public String toString() {
+		return "BODY: " + body + " " + actor;
+	}
+}

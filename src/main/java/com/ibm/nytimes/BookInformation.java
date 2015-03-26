@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,57 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.nytimes;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class BookInformation {
+
+	@JsonProperty("title")
+	private String title ="";
+
+	@JsonProperty("description")
+	private String description;
+
+	@JsonProperty("author")
+	private String author = "";
+
+	@JsonProperty("title")
+	public String getTitle() {
+		return title;
+	}
+
+	@JsonProperty("title")
+	public void setTitle(String t) {
+		title = t;
+	}
+
+	@JsonProperty("description")
+	public String getDescription() {
+		return description;
+	}
+
+	@JsonProperty("description")
+	public void setDescription(String d) {
+		description = d;
+	}
+
+	@JsonProperty("author")
+	public String getAuthor() {
+		return author;
+	}
+
+	@JsonProperty("author")
+	public void setAuthor(String a) {
+		author = a;
+	}
+
+	public String toString() {
+		return ("Title: " + title + " Author: " + author);
+	}
+
+}

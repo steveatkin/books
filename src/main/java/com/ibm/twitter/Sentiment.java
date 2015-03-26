@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,55 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.twitter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Sentiment {
+
+	@JsonIgnore
+	private SentimentCount count = new SentimentCount();
+
+	@JsonIgnore
+	public Sentiment(String p, SentimentCount c) {
+		polarity = p;
+		count = c;
+	}
+
+	public Sentiment() {
+
+	}
+
+	@JsonProperty("polarity")
+	private String polarity = "";
+
+	@JsonProperty("polarity")
+	public String getPolarity() {
+		return polarity;
+	}
+
+	@JsonProperty("polarity")
+	public void setPolarity(String p){
+		polarity = p;
+	}
+
+	@JsonIgnore
+	public void setCount(long l) {
+		 count.setCount(l);
+	}
+
+	@JsonIgnore
+	public long getCount() {
+		return count.getCount();
+	}
+
+	public String toString() {
+		return "SENTIMENT: " + polarity;
+	}
+
+}

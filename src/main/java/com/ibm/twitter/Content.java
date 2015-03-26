@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.twitter;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Content {
+
+	@JsonProperty("sentiment")
+	private Sentiment sentiment = new Sentiment();
+
+	@JsonProperty("sentiment")
+	public Sentiment getSentiment() {
+		return sentiment;
+	}
+
+	@JsonProperty("sentiment")
+	public void setSentiment(Sentiment s){
+		sentiment = s;
+	}
+
+	public String toString() {
+		return sentiment.toString();
+	}
+}

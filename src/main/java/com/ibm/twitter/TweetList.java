@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,41 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.twitter;
+
+
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class TweetList {
+
+	@JsonProperty("tweets")
+	private ArrayList<TweetMessage> tweets = new ArrayList<TweetMessage>();
+
+	@JsonProperty("tweets")
+	public ArrayList<TweetMessage> getTweetList() {
+		return tweets;
+	}
+
+	@JsonProperty("tweets")
+	public void setTweetList(ArrayList<TweetMessage> t){
+		tweets = t;
+	}
+
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+
+		for(TweetMessage tweet : tweets) {
+			sb.append(tweet.toString());
+			sb.append(System.lineSeparator());
+		}
+
+		return sb.toString();
+	}
+
+}

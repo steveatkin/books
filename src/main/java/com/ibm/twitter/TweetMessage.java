@@ -1,3 +1,4 @@
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 IBM
@@ -19,3 +20,44 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+
+package com.ibm.twitter;
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class TweetMessage {
+
+	@JsonProperty("message")
+	private Tweet tweet = new Tweet();
+
+	@JsonProperty("cde")
+	private Cde cde = new Cde();
+
+	@JsonProperty("message")
+	public Tweet getMessage() {
+		return tweet;
+	}
+
+	@JsonProperty("message")
+	public void setMessage(Tweet t){
+		tweet = t;
+	}
+
+	@JsonProperty("cde")
+	public Cde getCde() {
+		return cde;
+	}
+
+	@JsonProperty("cde")
+	public void setCde(Cde c){
+		cde = c;
+	}
+
+	public String toString() {
+		return tweet.toString() + " " + cde.toString();
+	}
+}
