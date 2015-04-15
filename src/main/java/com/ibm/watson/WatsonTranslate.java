@@ -101,19 +101,22 @@ public class WatsonTranslate {
     }
 
 	public WatsonTranslate(Locale locale) {
-		String bcp47Tag = locale.toLanguageTag();
-		logger.debug("BCP 47 language tag {}", bcp47Tag);
-		// see if this is a supported language for Watson translate
+		  String bcp47Tag = locale.toLanguageTag();
+			String isoLang = locale.getLanguage();
 
-		if(bcp47Tag.equalsIgnoreCase("es")) {
-			watsonLangPair = "mt-enus-eses";
-		}
-		else if (bcp47Tag.equalsIgnoreCase("fr")) {
-			watsonLangPair = "mt-enus-frfr";
-		}
-		else if(bcp47Tag.equalsIgnoreCase("pt-BR")) {
-			watsonLangPair = "mt-enus-ptbr";
-		}
+			logger.debug("BCP 47 language tag {}", bcp47Tag);
+			logger.debug("ISO language tag {}", isoLang);
+			// see if this is a supported language for Watson translate
+
+			if(isoLang.equalsIgnoreCase("es")) {
+				watsonLangPair = "mt-enus-eses";
+			}
+			else if (isoLang.equalsIgnoreCase("fr")) {
+				watsonLangPair = "mt-enus-frfr";
+			}
+			else if(bcp47Tag.equalsIgnoreCase("pt-BR")) {
+				watsonLangPair = "mt-enus-ptbr";
+			}
 	}
 
 	public String translate(String text) {

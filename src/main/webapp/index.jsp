@@ -28,6 +28,7 @@ THE SOFTWARE.
 <%@ page import="java.util.ResourceBundle"%>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.util.ResourceBundle.Control" %>
+<%@ page import="com.ibm.gaas.ServiceAccount" %>
 <%@ page import="com.ibm.gaas.CloudResourceBundle" %>
 <%@ page import="com.ibm.gaas.CloudResourceBundleControl" %>
 <%@ page import="com.ibm.globalization.Globalization" %>
@@ -36,8 +37,8 @@ THE SOFTWARE.
 <%
 //ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.getLocale());
 
-URL serviceUrl = new URL(Globalization.getURI());
-Control control = CloudResourceBundleControl.getInstanceWithNoCache(serviceUrl, Globalization.getAPIKey());
+ServiceAccount account = ServiceAccount.getInstance();
+Control control = CloudResourceBundleControl.getInstance(account, ResourceBundle.Control.TTL_DONT_CACHE);
 ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.getLocale(), control);
 %>
 
