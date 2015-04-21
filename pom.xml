@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>put group id here</groupId>
-  <artifactId>put id here</artifactId>
+  <groupId>com.ibm.bookclub</groupId>
+  <artifactId>BookClub</artifactId>
   <packaging>war</packaging>
-  <version>1.0</version>
-  <name>put name here</name>
+  <version>1.0-SNAPSHOT</version>
+  <name>BookClub Webapp</name>
   <url>http://maven.apache.org</url>
 
   <repositories>
@@ -51,6 +51,12 @@
       <artifactId>json</artifactId>
       <version>20090211</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+	     <groupId>com.google.code.gson</groupId>
+	     <artifactId>gson</artifactId>
+	     <version>2.3.1</version>
+       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -144,8 +150,8 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.ibm.cloudloader</groupId>
-      <artifactId>cloudloader</artifactId>
+      <groupId>com.ibm.gaas</groupId>
+      <artifactId>gaas-java-client</artifactId>
       <version>1.0.0</version>
       <scope>compile</scope>
     </dependency>
@@ -159,86 +165,23 @@
   	</pluginRepository>
   </pluginRepositories>
 
-  <profiles>
-    <profile>
-      <id>deploy</id>
-      <build>
-        <plugins>
-          <plugin>
-  		        <groupId>org.cloudfoundry</groupId>
-  		        <artifactId>cf-maven-plugin</artifactId>
-  		        <version>1.1.1</version>
-  		        <configuration>
-      		        <target>https://api.ng.bluemix.net</target>
-      		        <url>put url here</url>
-                  <org>put org here</org>
-                  <space>put space here</space>
-                  <username>put user name here</username>
-                  <password>put password here</password>
-                  <instances>1</instances>
-      		        <memory>1024</memory>
-                  <services>
-                    <service>
-                      <name>IBM Insights for Twitter</name>
-                      <label>twitterinsights</label>
-                      <plan>Free</plan>
-                    </service>
-                    <service>
-                      <name>IBM Globalization</name>
-                      <label>IBM Globalization</label>
-                      <plan>Experimental</plan>
-                    </service>
-                    <service>
-                      <name>Machine Translation</name>
-                      <label>machine_translation</label>
-                      <plan>Free</plan>
-                    </service>
-                    <service>
-                      <name>AlchemyAPI</name>
-                      <label>user-provided</label>
-                      <plan>user-provided</plan>
-                    </service>
-                  </services>
-                  <env>
-                    <NY_TIMES_URL>api.nytimes.com</NY_TIMES_URL>
-                    <NY_TIMES_API_KEY>put key here</NY_TIMES_API_KEY>
-                    <DREAM_BOOKS_URL>idreambooks.com</DREAM_BOOKS_URL>
-                    <DREAM_BOOKS_API_KEY>put key here</DREAM_BOOKS_API_KEY>
-                    <ALCHEMY_API_KEY>put key here</ALCHEMY_API_KEY>
-                    <WATSON_URL>https://gateway.watsonplatform.net/machine-translation-beta/api</WATSON_URL>
-                    <WATSON_USERNAME>put name here</WATSON_USERNAME>
-                    <WATSON_PASSWORD>put password here</WATSON_PASSWORD>
-                    <TWITTER_URL>cdeservice.mybluemix.net</TWITTER_URL>
-                    <TWITTER_USERNAME>put name here</TWITTER_USERNAME>
-                    <TWITTER_PASSWORD>put password here</TWITTER_PASSWORD>
-                    <GLOBALIZATION_URL>https://gaas.stage1.mybluemix.net/translate/v1</GLOBALIZATION_URL>
-                    <GLOBALIZATION_API_KEY>put key here</GLOBALIZATION_API_KEY>
-                  </env>
-  		        </configuration>
-              <executions>
-                <execution>
-                  <phase>package</phase>
-                  <goals>
-                    <goal>push</goal>
-                  </goals>
-              </execution>
-            </executions>
-        </plugin>
-        <plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>2.6.1</version>
-            <executions>
-              <execution>
-                <id>auto-clean</id>
-                <phase>initialize</phase>
-                <goals>
-                  <goal>clean</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-      </plugins>
-    </build>
-    </profile>
-  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.6.1</version>
+        <executions>
+          <execution>
+            <id>auto-clean</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
