@@ -1,0 +1,11 @@
+applications:
+- services:
+  - mt-watson
+  - IBM Globalization
+  - IBM Insights for Twitter
+  host: bookclub2
+  name: bookclub2
+  path: BookClub-1.0-SNAPSHOT.war
+  domain: mybluemix.net
+  instances: 1
+  memory: 768M
