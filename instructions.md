@@ -15,18 +15,27 @@ This sample application demonstrates how to use the Globalization service in a J
 
 		cf login -u ${username}
 		cf target -o ${org} -s ${space}
+		
+6. Create a new WebSphere Liberty based application in the Bluemix dashboard and select 
+a name and route for the application. The name and route that you seect 
+will be used to access the application.
 
-6. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
+7. Create and bind the Globalization, Watson Machine Translation, and IBM Insights for Twitter services
+to the application that you just created. The names you select for the services will be used in the
+deploy script.
+   
+
+8. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
 
 		http://developer.nytimes.com
 		http://idreambooks.com/api
 		http://www.alchemyapi.com
 	 
-7. Add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target.
+9. Add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target.
 
-8. Add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
+10. Add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
 
-9. Edit the deploy script and fill in the name of your WAR file, your credentials for 
+11. Edit the deploy script and fill in the name of your WAR file, your credentials for 
 the New York Times, iDreamBooks, and IBM AlchemyAPI services and names that you have used for the 
 Watson MT, Globalization, and Insights for Twitter services.
 
@@ -41,4 +50,4 @@ Watson MT, Globalization, and Insights for Twitter services.
 		cf set-env "${CF_APP}" ALCHEMY_API_KEY "api key" 
 		cf start "${CF_APP}"
 
-10. Access your app: [http://${route}](http://${route})
+12. Access your app: [http://${route}](http://${route})
