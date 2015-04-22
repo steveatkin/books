@@ -22,12 +22,10 @@ repository to your local system.
 		cf login -u ${username}
 		cf target -o ${org} -s ${space}
 		
-
 6. Create and bind the Globalization, Watson Machine Translation, and IBM Insights for Twitter services
 to the application that you just created. The names you select for the services will be used in the
 deploy script.
    
-
 7. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
 
 		http://developer.nytimes.com
