@@ -5,40 +5,43 @@ Welcome to Globalization Service Starter application!
 This sample application demonstrates how to use the Globalization service in a Java Web application (powered by WebSphere Liberty) and deploy it on Bluemix.
 
 1. [Install the cf command-line tool](${doc-url}/#starters/BuildingWeb.html#install_cf).
-2. [Download the starter application package](${ace-url}/rest/apps/${app-guid}/starter-download).
-3. Extract the package and `cd` to it.
-4. Connect to Bluemix:
+
+2. Create a new WebSphere Liberty based application in the Bluemix dashboard and select 
+a name and route for the application. The name and route that you select 
+will be used to access the application.
+
+3. If you wish to build and deploy this application from your own system, then fork and pull this 
+repository to your local system.
+
+4. If you are going to build and deploy directly from your system, then connect to Bluemix:
 
 		cf api ${api-url}
 
-5. Log into Bluemix:
+5. If you are going to build and deploy directly from your system, then log into Bluemix:
 
 		cf login -u ${username}
 		cf target -o ${org} -s ${space}
 		
-6. Create a new WebSphere Liberty based application in the Bluemix dashboard and select 
-a name and route for the application. The name and route that you seect 
-will be used to access the application.
 
-7. Create and bind the Globalization, Watson Machine Translation, and IBM Insights for Twitter services
+6. Create and bind the Globalization, Watson Machine Translation, and IBM Insights for Twitter services
 to the application that you just created. The names you select for the services will be used in the
 deploy script.
    
 
-8. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
+7. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
 
 		http://developer.nytimes.com
 		http://idreambooks.com/api
 		http://www.alchemyapi.com
 	 
-9. If you want to build the application in IBM DevOps Services, then add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target. 
+8. If you want to build the application in IBM DevOps Services, then add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target. 
 Otherwise build the application from your command line:
 
 		mvn package
 
-10. If you want to deploy the application from IBM DevOps services, then add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
+9. If you want to deploy the application from IBM DevOps services, then add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
 
-11. If you are deploying the application from IBM DevOps services, then Edit the deploy script 
+10. If you are deploying the application from IBM DevOps services, then Edit the deploy script 
 and fill in your credentials for the New York Times, iDreamBooks, and IBM AlchemyAPI services 
 and names that you have used for the Watson MT, Globalization, and Insights for Twitter services. 
 If you are deploying directly from your command line then you will need to substitute the name of the application 
@@ -55,4 +58,4 @@ in place of the ${CF_APP} environment variable.
 		cf set-env "${CF_APP}" ALCHEMY_API_KEY "api key" 
 		cf start "${CF_APP}"
 		
-12. Access your app: [http://${route}](http://${route})
+11. Access your app: [http://${route}](http://${route})
