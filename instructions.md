@@ -21,20 +21,23 @@ This sample application demonstrates how to use the Globalization service in a J
 	 http://developer.nytimes.com
 	 http://idreambooks.com/api
 	 http://www.alchemyapi.com
+	 
+7. Add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target.
 
-7. Enter your credentials and api keys into the environment variables in pom.xml:
+8. Add a Stage from the "Build & Deploy" tabe wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
+
+9. Edit the deploy script and fill in the name of your WAR file and your credentials for the New York Times, iDreamBooks, and IBM AlchemyAPI services.
+
+	cf push "${CF_APP}" -p "put name of war file here" -m 768M --no-start
+	cf bind-service "${CF_APP}" "put name of Watson Machine Translation service here"
+	cf bind-service "${CF_APP}" "put name of Globalization service here"
+	cf bind-service "${CF_APP}" "put name of Insights for Twitter service here"
+	cf set-env "${CF_APP}" NY_TIMES_URL api.nytimes.com
+	cf set-env "${CF_APP}" NY_TIMES_API_KEY "put api key here"
+	cf set-env "${CF_APP}" DREAM_BOOKS_URL idreambooks.com
+	cf set-env "${CF_APP}" DREAM_BOOKS_API_KEY "put api key here"
+	cf set-env "${CF_APP}" ALCHEMY_API_KEY "put api key here" 
+	cf start "${CF_APP}"
 
 
-7. Compile the Java code and generate the war package using Maven:
-
-		mvn package
-
-8. Deploy your app:
-
-		mvn -P deploy package
-
-		or
-
-		cf push ${app} -p BookClub-1.0.war
-
-9. Access your app: [http://${route}](http://${route})
+10. Access your app: [http://${route}](http://${route})
