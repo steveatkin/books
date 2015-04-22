@@ -35,11 +35,11 @@ deploy script.
 
 10. Add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
 
-11. Edit the deploy script and fill in the name of your WAR file, your credentials for 
+11. Edit the deploy script and fill in your credentials for 
 the New York Times, iDreamBooks, and IBM AlchemyAPI services and names that you have used for the 
 Watson MT, Globalization, and Insights for Twitter services.
 
-		cf push "${CF_APP}" -p "name of war file" -m 768M --no-start
+		cf push "${CF_APP}" -p BookClub-1.0-SNAPSHOT.war -m 768M --no-start
 		cf bind-service "${CF_APP}" "Watson Machine Translation service name"
 		cf bind-service "${CF_APP}" "Globalization service name"
 		cf bind-service "${CF_APP}" "Insights for Twitter service name"
