@@ -31,13 +31,18 @@ deploy script.
 		http://idreambooks.com/api
 		http://www.alchemyapi.com
 	 
-9. Add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target.
+9. If you want to build the application in IBM DevOps Services, then add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target. 
+Otherwise build the application from your command line:
 
-10. Add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
+		mvn package
 
-11. Edit the deploy script and fill in your credentials for 
-the New York Times, iDreamBooks, and IBM AlchemyAPI services and names that you have used for the 
-Watson MT, Globalization, and Insights for Twitter services.
+10. If you want to deploy the application from IBM DevOps services, then add a Stage from the "Build & Deploy" tab wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
+
+11. If you are deploying the application from IBM DevOps services, then Edit the deploy script 
+and fill in your credentials for the New York Times, iDreamBooks, and IBM AlchemyAPI services 
+and names that you have used for the Watson MT, Globalization, and Insights for Twitter services. 
+If you are deploying directly from your command line then you will need to substitute the name of the application 
+in place of the ${CF_APP} environment variable.
 
 		cf push "${CF_APP}" -p BookClub-1.0-SNAPSHOT.war -m 768M --no-start
 		cf bind-service "${CF_APP}" "Watson Machine Translation service name"
@@ -49,5 +54,5 @@ Watson MT, Globalization, and Insights for Twitter services.
 		cf set-env "${CF_APP}" DREAM_BOOKS_API_KEY "api key"
 		cf set-env "${CF_APP}" ALCHEMY_API_KEY "api key" 
 		cf start "${CF_APP}"
-
+		
 12. Access your app: [http://${route}](http://${route})
