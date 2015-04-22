@@ -21,7 +21,7 @@ This sample application demonstrates how to use the Globalization service in a J
 	 
 		http://developer.nytimes.com
 		http://idreambooks.com/api
-	http://www.alchemyapi.com
+		http://www.alchemyapi.com
 	 
 7. Add a Stage from the "Build & Deploy" tab with a Build job type using the maven builder. Use the default archive directory of target.
 
