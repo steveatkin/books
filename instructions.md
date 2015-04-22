@@ -18,6 +18,7 @@ This sample application demonstrates how to use the Globalization service in a J
 
 6. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
 
+	 
 	 http://developer.nytimes.com
 	 http://idreambooks.com/api
 	 http://www.alchemyapi.com
@@ -26,18 +27,20 @@ This sample application demonstrates how to use the Globalization service in a J
 
 8. Add a Stage from the "Build & Deploy" tabe wih a Deploy job type. Fill in the fields for your Bluemix organization, space, and application name.
 
-9. Edit the deploy script and fill in the name of your WAR file and your credentials for the New York Times, iDreamBooks, and IBM AlchemyAPI services.
+9. Edit the deploy script and fill in the name of your WAR file, your credentials for 
+the New York Times, iDreamBooks, and IBM AlchemyAPI services and names that you have used for the 
+Watson MT, Globalization, Insights for Twitter services.
 
 	
-	cf push "${CF_APP}" -p "put name of war file here" -m 768M --no-start
-	cf bind-service "${CF_APP}" "put name of Watson Machine Translation service here"
-	cf bind-service "${CF_APP}" "put name of Globalization service here"
-	cf bind-service "${CF_APP}" "put name of Insights for Twitter service here"
+	cf push "${CF_APP}" -p "name of war file" -m 768M --no-start
+	cf bind-service "${CF_APP}" "Watson Machine Translation service name"
+	cf bind-service "${CF_APP}" "Globalization service name"
+	cf bind-service "${CF_APP}" "Insights for Twitter service name"
 	cf set-env "${CF_APP}" NY_TIMES_URL api.nytimes.com
-	cf set-env "${CF_APP}" NY_TIMES_API_KEY "put api key here"
+	cf set-env "${CF_APP}" NY_TIMES_API_KEY "api key"
 	cf set-env "${CF_APP}" DREAM_BOOKS_URL idreambooks.com
-	cf set-env "${CF_APP}" DREAM_BOOKS_API_KEY "put api key here"
-	cf set-env "${CF_APP}" ALCHEMY_API_KEY "put api key here" 
+	cf set-env "${CF_APP}" DREAM_BOOKS_API_KEY "api key"
+	cf set-env "${CF_APP}" ALCHEMY_API_KEY "api key" 
 	cf start "${CF_APP}"
 
 
