@@ -18,7 +18,6 @@ This sample application demonstrates how to use the Globalization service in a J
 
 6. Obtain api keys for the New York Times Best Sellers, iDreamBooks, and AlchemyAPI services:
 
-	 
 		http://developer.nytimes.com
 		http://idreambooks.com/api
 		http://www.alchemyapi.com
