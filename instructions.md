@@ -28,6 +28,7 @@ This sample application demonstrates how to use the Globalization service in a J
 
 9. Edit the deploy script and fill in the name of your WAR file and your credentials for the New York Times, iDreamBooks, and IBM AlchemyAPI services.
 
+	
 	cf push "${CF_APP}" -p "put name of war file here" -m 768M --no-start
 	cf bind-service "${CF_APP}" "put name of Watson Machine Translation service here"
 	cf bind-service "${CF_APP}" "put name of Globalization service here"
