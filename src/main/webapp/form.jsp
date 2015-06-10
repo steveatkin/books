@@ -33,6 +33,7 @@ THE SOFTWARE.
 <%@ page import="com.ibm.gaas.ServiceAccount" %>
 <%@ page import="com.ibm.gaas.CloudResourceBundleControl" %>
 <%@ page import="com.ibm.globalization.Globalization" %>
+<%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 
 <%
 //ResourceBundle res=ResourceBundle.getBundle( "com.ibm.translation", request.getLocale());
@@ -315,14 +316,14 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=res.getString("closed")%>');
+      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('finished', function(event) {
         source.close();
       }, false);
     } else {
-      alert('<%=res.getString("sse_error")%>');
+      alert(form.jsp);
     }
     return false;
   }
@@ -346,7 +347,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=res.getString("closed")%>');
+      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('finished', function(event) {
@@ -361,7 +362,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
         source.close();
       }, false);
     } else {
-      alert('<%=res.getString("sse_error")%>');
+      alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
     }
     return false;
   }
@@ -386,14 +387,14 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=res.getString("closed")%>');
+      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('finished', function(event) {
         source.close();
       }, false);
     } else {
-      alert('<%=res.getString("sse_error")%>');
+      alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
     }
     return false;
   }
@@ -415,7 +416,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=res.getString("closed")%>');
+      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('synopsis', function(event) {
@@ -428,7 +429,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
         var reviews = $(tableId).bootstrapTable('getData');
       }, false);
     } else {
-      alert('<%=res.getString("sse_error")%>');
+      alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
     }
     return false;
   }
@@ -436,7 +437,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
   // Load the translated string to show in the table when there is no data
   $.extend($.fn.bootstrapTable.defaults, {
   	formatNoMatches: function() {
-            return '<%=res.getString("no_data")%>';
+            return '<%=StringEscapeUtils.escapeJavaScript(res.getString("no_data"))%>';
         }
     });
 
@@ -483,7 +484,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       				$('#description' + IdNum).text(data);
       			}
       			else {
-      				alert('<%=res.getString("closed")%>');
+      				alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       			}	
       		});
       }
@@ -546,7 +547,7 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
         		$('#accordion').show();
         	},
         	error: function(xhr) {
-        		alert('<%=res.getString("ny_times_error")%>');
+        		alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("ny_times_error"))%>');
         	},
         	complete: function() {
         		// Hide the loading gif
