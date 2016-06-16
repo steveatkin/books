@@ -28,17 +28,19 @@ THE SOFTWARE.
 <%@ page import="java.util.ResourceBundle"%>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.util.ResourceBundle.Control" %>
-<%@ page import="com.ibm.gaas.ServiceAccount" %>
-<%@ page import="com.ibm.gaas.CloudResourceBundle" %>
-<%@ page import="com.ibm.gaas.CloudResourceBundleControl" %>
+<%@ page import="com.ibm.g11n.pipeline.client.ServiceAccount" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundle" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundleControl" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundleControl.LookupMode" %>
 <%@ page import="com.ibm.globalization.Globalization" %>
+<%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
+
 
 
 <%
 //ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.getLocale());
-
 ServiceAccount account = ServiceAccount.getInstance();
-Control control = CloudResourceBundleControl.getInstance(account, ResourceBundle.Control.TTL_DONT_CACHE);
+Control control = CloudResourceBundleControl.getInstance(account, CloudResourceBundleControl.LookupMode.LOCAL_THEN_REMOTE);
 ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.getLocale(), control);
 %>
 

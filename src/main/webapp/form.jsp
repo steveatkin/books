@@ -29,17 +29,17 @@ THE SOFTWARE.
 <%@ page import="java.util.ResourceBundle" %>
 <%@ page import="java.net.URL" %>
 <%@ page import="java.util.ResourceBundle.Control" %>
-<%@ page import="com.ibm.gaas.CloudResourceBundle" %>
-<%@ page import="com.ibm.gaas.ServiceAccount" %>
-<%@ page import="com.ibm.gaas.CloudResourceBundleControl" %>
+<%@ page import="com.ibm.g11n.pipeline.client.ServiceAccount" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundle" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundleControl" %>
+<%@ page import="com.ibm.g11n.pipeline.client.rb.CloudResourceBundleControl.LookupMode" %>
 <%@ page import="com.ibm.globalization.Globalization" %>
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 
 <%
 //ResourceBundle res=ResourceBundle.getBundle( "com.ibm.translation", request.getLocale());
-
 ServiceAccount account = ServiceAccount.getInstance();
-Control control = CloudResourceBundleControl.getInstance(account, ResourceBundle.Control.TTL_DONT_CACHE);
+Control control = CloudResourceBundleControl.getInstance(account, CloudResourceBundleControl.LookupMode.LOCAL_THEN_REMOTE);
 ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.getLocale(), control);
 %>
 
@@ -316,14 +316,14 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
+      	// alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('finished', function(event) {
         source.close();
       }, false);
     } else {
-      alert(form.jsp);
+      // alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
     }
     return false;
   }
@@ -387,14 +387,14 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       };
 
       source.onerror = function(event) {
-      	alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
+      	// alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
       };
 
       source.addEventListener('finished', function(event) {
         source.close();
       }, false);
     } else {
-      alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
+      // alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("sse_error"))%>');
     }
     return false;
   }
@@ -472,26 +472,26 @@ ResourceBundle res = ResourceBundle.getBundle("com.ibm.translation", request.get
       var IdNum = $('#' + e.target.id).data('number');
       var jsonData = $('#accordion' + IdNum).data('book');
       var book = JSON.parse(jsonData);
-      
+
       var enable = $('#translation').val();
-      
+
       // Add the description to the accordion panel
       if(enable === 'true') {
-      	$.post('Watson', 
-      		{text: book.description}, 
+      	$.post('Watson',
+      		{text: book.description},
       		function(data, status) {
       			if(status === 'success') {
       				$('#description' + IdNum).text(data);
       			}
       			else {
       				alert('<%=StringEscapeUtils.escapeJavaScript(res.getString("closed"))%>');
-      			}	
+      			}
       		});
       }
       else {
       	$('#description' + IdNum).text(book.description);
       }
-      
+
       setupTwitterEventSource(IdNum);
       setupSentimentEventSource(IdNum);
       setupReviewEventSource(IdNum);
