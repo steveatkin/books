@@ -67,7 +67,7 @@ If you are deploying directly from your command line then you will need to subst
 in place of the ${CF_APP} environment variable.
 
 		cf push "${CF_APP}" -p BookClub-1.0-SNAPSHOT.war -m 768M --no-start
-		cf bind-service "${CF_APP}" "Watson Language Translation service name"
+		cf bind-service "${CF_APP}" "Watson Language Translator service name"
 		cf bind-service "${CF_APP}" "Globalization service name"
 		cf bind-service "${CF_APP}" "Insights for Twitter service name"
 		cf set-env "${CF_APP}" NY_TIMES_URL api.nytimes.com
